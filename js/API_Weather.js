@@ -19,18 +19,9 @@ class API_WEATHER{
 
   // Faire la requete à l'API openweathermap
   // Retourne une promise
-  
-  fetchTodayForecast(){
-    return axios
-    .get(`${API_URL}?q=${this.city}&cnt{1}&units=metric&appid=${API_KEY}`, {
-      crossdomain: true
-    })
-  }
-
   getThreeDayForecast(){
     return axios
     .get(`${API_URL}?q=${this.city}&units=metric&cnt=4&appid=${API_KEY}`, {crossdomain: true})
-    
   }
     
   
