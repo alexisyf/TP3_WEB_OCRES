@@ -21,8 +21,9 @@ function start() {
       {
        document.getElementById(a.toString().concat("-forecast-main")).innerHTML = data.list[a].weather[0].main;
        document.getElementById(a.toString().concat("-forecast-more-info")).innerHTML = data.list[a].weather[0].description;
-       document.getElementById(a.toString().concat("-weather-container")).innerHTML = data.list[a].temp.day;;
        document.getElementById(a.toString().concat("-forecast-temp")).innerHTML = apiWeather.getHTMLElementFromIcon(data.list[a].weather[0].icon);
+       document.getElementById(a.toString().concat("-weather-container")).innerHTML = `${data.list[a].temp.day}°C`;
+       
       }
     
       
