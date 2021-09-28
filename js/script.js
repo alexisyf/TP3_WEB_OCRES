@@ -8,23 +8,23 @@ function start() {
   // Appel de la fonction fetchTodayForecast
 
   apiWeather
-    .fetchTodayForecast()
+    
+    .getThreeDayForecast()
     .then(function(response) {
       // Récupère la donnée d'une API
       const data = response.data;
-      
+      console.log(data);
 
       // On récupère l'information principal
-      const main = data.weather[0].main;
-      const description = data.weather[0].description;
-      const temp = data.main.temp;
-      const icon = apiWeather.getHTMLElementFromIcon(data.weather[0].icon);
-
-      // Modifier le DOM
-      document.getElementById('today-forecast-main').innerHTML = main;
-      document.getElementById('today-forecast-more-info').innerHTML = description;
-      document.getElementById('icon-weather-container').innerHTML = icon;
-      document.getElementById('today-forecast-temp').innerHTML = `${temp}°C`;
+   
+      for(let a=0;a<=3;a++)
+      {
+       document.getElementById(a.toString().concat("-forecast-main")).innerHTML = data.list[a].weather[0].main;
+       document.getElementById(a.toString().concat("-forecast-more-info")).innerHTML = data.list[a].weather[0].description;
+       document.getElementById(a.toString().concat("-weather-container")).innerHTML = data.list[a].temp.day;;
+       document.getElementById(a.toString().concat("-forecast-temp")).innerHTML = apiWeather.getHTMLElementFromIcon(data.list[a].weather[0].icon);
+      }
+    
       
     })
     .catch(function(error) {
